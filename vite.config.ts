@@ -15,5 +15,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/gacha-garden-pwa/",
+  base: "/gatchacha/",
 }));
