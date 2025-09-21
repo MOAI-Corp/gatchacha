@@ -196,7 +196,7 @@ const Index = () => {
 
           <div className="relative inline-block mb-6">
             <h1 className="text-6xl font-bold text-japanese-title mb-4 flex items-center justify-center gap-4">
-              {t('title')}
+              <img src="/icon.png" alt="" />{t('title')}
             </h1>
             <motion.div
               className="absolute -top-2 -left-2 text-4xl"
@@ -219,17 +219,6 @@ const Index = () => {
               ✨
             </motion.div>
           </div>
-          <p className="text-xl text-muted-foreground flex items-center justify-center gap-2">
-            <span className="text-2xl">🏮</span>
-            {t('subtitle')}
-            <span className="text-2xl">🏮</span>
-          </p>
-          <div className="mt-4 flex justify-center gap-6 text-3xl">
-            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0 }}>🌸</motion.span>
-            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}>⛩️</motion.span>
-            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}>🎭</motion.span>
-            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.9 }}>🏮</motion.span>
-          </div>
         </motion.div>
 
         {/* 템플릿 선택 */}
@@ -237,7 +226,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-12"
+          className="mb-12 flex justify-center"
         >
           <TemplateSelector
             templates={gachaTemplates}
