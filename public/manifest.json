@@ -1,7 +1,7 @@
 {
-  "name": "뽑기판 - Magic Gacha",
+  "name": "뽑기판 - Gatchacha",
   "short_name": "뽑기판",
-  "description": "화려한 이펙트가 있는 뽑기 시스템",
+  "description": "A gacha simulator for Genshin Impact, Honkai Star Rail, and more.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f0f23",

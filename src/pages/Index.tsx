@@ -182,12 +182,12 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         {/* Header with Language Selector */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center"
         >
           {/* Language Selector */}
           <div className="flex justify-end mb-6">
@@ -195,8 +195,8 @@ const Index = () => {
           </div>
 
           <div className="relative inline-block mb-6">
-            <h1 className="text-6xl font-bold text-japanese-title mb-4 flex items-center justify-center gap-4">
-              <img src="/icon.png" alt="" />{t('title')}
+            <h1 className="text-6xl font-bold text-japanese-title flex items-center justify-center gap-4">
+              <img src="/icon.png" alt="" />{t('title')}<img src="/icon.png" alt="" />
             </h1>
             <motion.div
               className="absolute -top-2 -left-2 text-4xl"
@@ -237,7 +237,7 @@ const Index = () => {
 
         {/* 메인 뽑기 영역 */}
         {currentTemplate && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8">
             {/* 뽑기 휠 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -262,17 +262,8 @@ const Index = () => {
                   totalCount={totalCount}
                 />
               </Card>
-            </motion.div>
-
-            {/* 사이드 패널 */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-              className="space-y-6"
-            >
               {/* 컨트롤 패널 */}
-              <Card className="bg-card/80 backdrop-blur-sm border border-primary/20 card-hover">
+              <Card className="col-span-1 mt-6 bg-card/80 backdrop-blur-sm border border-primary/20 card-hover">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <motion.div
@@ -313,120 +304,274 @@ const Index = () => {
                   </motion.div>
                 </CardContent>
               </Card>
+            </motion.div>
 
-              {/* 통계 */}
-              <Card className="bg-card/80 backdrop-blur-sm border border-primary/20 card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+            {/* 사이드 패널 */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              className="col-span-3 space-y-6"
+            >
+              {/* 일본 복권판 스타일 통계 */}
+              <Card className="bg-gradient-to-br from-red-50 to-yellow-50 border-4 border-red-500 rounded-2xl relative overflow-hidden">
+                {/* 복권판 배경 패턴 */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="w-full h-full" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='0.4'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm0 0c0 5.5 4.5 10 10 10s10-4.5 10-10-4.5-10-10-10-10 4.5-10 10z'/%3E%3C/g%3E%3C/svg%3E")`,
+                    backgroundSize: '20px 20px'
+                  }} />
+                </div>
+
+                {/* 복권판 헤더 */}
+                <CardHeader className="relative z-10 bg-gradient-to-r from-red-600 to-red-700 text-white border-b-4 border-yellow-400">
+                  <CardTitle className="flex items-center justify-center gap-3 text-2xl font-bold">
                     <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                      animate={{
+                        rotate: [0, 360],
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      className="text-3xl"
                     >
-                      📊
+                      🎟️
                     </motion.div>
-                    {t('statistics')}
+                    <span className="text-shadow">{t('statistics')}</span>
+                    <motion.div
+                      animate={{
+                        rotate: [360, 0],
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      className="text-3xl"
+                    >
+                      📋
+                    </motion.div>
                   </CardTitle>
+                  {/* 복권판 테두리 장식 */}
+                  <div className="absolute top-2 left-2 w-6 h-6 bg-yellow-400 rounded-full border-2 border-white"></div>
+                  <div className="absolute top-2 right-2 w-6 h-6 bg-yellow-400 rounded-full border-2 border-white"></div>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {/* 전체 통계 */}
-                    <div className="space-y-2 text-sm border-b border-muted/30 pb-3">
-                      <div className="flex justify-between">
-                        <span>{t('totalItems')}:</span>
-                        <span className="font-semibold text-primary">{totalCount}개</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>{t('remainingItems')}:</span>
-                        <span className="font-semibold text-blue-500">{remainingCount}개</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>{t('drawnItems')}:</span>
-                        <span className="font-semibold text-green-500">{drawnItems.length}개</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>{t('progress')}:</span>
-                        <span className="font-semibold text-accent">
+
+                <CardContent className="relative z-10 p-6">
+                  <div className="space-y-6">
+                    {/* 메인 통계 박스들 */}
+                    <div className="grid grid-cols-4 gap-4">
+                      <motion.div
+                        className="bg-white/90 border-3 border-red-400 rounded-xl p-4 text-center shadow-lg"
+                        whileHover={{ scale: 1.05, rotate: 1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className="text-sm text-gray-600 font-semibold">{t('totalItems')}</div>
+                        <div className="text-2xl font-bold text-red-600">{totalCount}</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="bg-white/90 border-3 border-blue-400 rounded-xl p-4 text-center shadow-lg"
+                        whileHover={{ scale: 1.05, rotate: -1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className="text-sm text-gray-600 font-semibold">{t('remainingItems')}</div>
+                        <div className="text-2xl font-bold text-blue-600">{remainingCount}</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="bg-white/90 border-3 border-green-400 rounded-xl p-4 text-center shadow-lg"
+                        whileHover={{ scale: 1.05, rotate: 1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className="text-sm text-gray-600 font-semibold">{t('drawnItems')}</div>
+                        <div className="text-2xl font-bold text-green-600">{drawnItems.length}</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="bg-white/90 border-3 border-purple-400 rounded-xl p-4 text-center shadow-lg"
+                        whileHover={{ scale: 1.05, rotate: -1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className="text-sm text-gray-600 font-semibold">{t('progress')}</div>
+                        <div className="text-2xl font-bold text-purple-600">
+                          {Math.round(((totalCount - remainingCount) / totalCount) * 100)}%
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* 진행률 바 - 복권판 스타일 */}
+                    <div className="bg-white/90 border-3 border-red-400 rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-bold text-red-700 flex items-center gap-2">
+                          <span className="text-xl">🎯</span>
+                          전체 진행률
+                        </span>
+                        <span className="bg-red-100 px-3 py-1 rounded-full text-red-700 font-bold">
                           {Math.round(((totalCount - remainingCount) / totalCount) * 100)}%
                         </span>
                       </div>
+                      <div className="bg-gray-200 rounded-full h-6 overflow-hidden border-2 border-red-300">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 relative"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${((totalCount - remainingCount) / totalCount) * 100}%` }}
+                          transition={{ duration: 1.5, ease: "easeOut" }}
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                            animate={{ x: ['-100%', '200%'] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          />
+                        </motion.div>
+                      </div>
                     </div>
+                  </div>
 
-                    {/* 등급별 상세 통계 */}
+                    {/* 일본 쿠지판 스타일 등급별 디스플레이 */}
                     {currentTemplate && (
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold text-muted-foreground">등급별 상세</h4>
-                        {[1, 2, 3, 4, 5].map((tier) => {
-                          const tierItems = currentTemplate.items.filter(item => item.tier === tier);
-                          const drawnTierItems = tierItems.filter(item => item.drawn);
-                          const remainingTierItems = tierItems.filter(item => !item.drawn);
+                      <div className="bg-gradient-to-br from-red-100 via-white to-yellow-100 border-8 border-red-600 rounded-3xl p-6 relative shadow-2xl">
+                        {/* 쿠지판 장식 헤더 */}
 
-                          if (tierItems.length === 0) return null;
+                        {/* 쿠지판 메인 보드 */}
+                        <div className="">
+                          {/* 일본 전통 패턴 배경 */}
+                          <div className="absolute inset-0 opacity-5">
+                            <div className="w-full h-full" style={{
+                              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30s-13.431 30-30 30S0 46.569 0 30 13.431 0 30 0zM15 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15-15z'/%3E%3C/g%3E%3C/svg%3E")`,
+                              backgroundSize: '30px 30px'
+                            }} />
+                          </div>
 
-                          const tierNames = {
-                            1: t('tierNames.1'),
-                            2: t('tierNames.2'),
-                            3: t('tierNames.3'),
-                            4: t('tierNames.4'),
-                            5: t('tierNames.5')
-                          };
+                          <div className="relative z-10 space-y-4">
+                            {[1, 2, 3, 4, 5].map((tier) => {
+                              const tierItems = currentTemplate.items.filter(item => item.tier === tier);
+                              const drawnTierItems = tierItems.filter(item => item.drawn);
 
-                          const tierColorClasses = {
-                            1: "text-legendary",
-                            2: "text-epic",
-                            3: "text-rare",
-                            4: "text-uncommon",
-                            5: "text-common"
-                          };
+                              if (tierItems.length === 0) return null;
 
-                          return (
-                            <motion.div
-                              key={tier}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: tier * 0.1 }}
-                              className="bg-muted/20 rounded-lg p-3 space-y-2"
-                            >
-                              <div className="flex items-center justify-between">
-                                <span className={`font-semibold text-sm ${tierColorClasses[tier as keyof typeof tierColorClasses]}`}>
-                                  {tierNames[tier as keyof typeof tierNames]} 등급
-                                </span>
-                                <span className="text-xs text-muted-foreground">
-                                  {drawnTierItems.length}/{tierItems.length}
-                                </span>
-                              </div>
+                              const tierNames = {
+                                1: t('tierNames.1'),
+                                2: t('tierNames.2'),
+                                3: t('tierNames.3'),
+                                4: t('tierNames.4'),
+                                5: t('tierNames.5')
+                              };
 
-                              {/* 진행률 바 */}
-                              <div className="bg-muted/50 rounded-full h-2 overflow-hidden progress-bar">
+                              const tierData = {
+                                1: { label: "特等賞", color: "from-yellow-300 to-orange-400", emoji: "🏆", border: "border-yellow-500" },
+                                2: { label: "一等賞", color: "from-purple-300 to-pink-400", emoji: "🥇", border: "border-purple-500" },
+                                3: { label: "二等賞", color: "from-blue-300 to-cyan-400", emoji: "🥈", border: "border-blue-500" },
+                                4: { label: "三等賞", color: "from-green-300 to-emerald-400", emoji: "🥉", border: "border-green-500" },
+                                5: { label: "参加賞", color: "from-gray-300 to-gray-400", emoji: "🎖️", border: "border-gray-500" }
+                              };
+
+                              const data = tierData[tier as keyof typeof tierData];
+
+                              return (
                                 <motion.div
-                                  className={`h-full ${
-                                    tier === 1 ? 'bg-legendary' :
-                                    tier === 2 ? 'bg-epic' :
-                                    tier === 3 ? 'bg-rare' :
-                                    tier === 4 ? 'bg-uncommon' :
-                                    'bg-common'
-                                  }`}
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${(drawnTierItems.length / tierItems.length) * 100}%` }}
-                                  transition={{ duration: 0.8, delay: tier * 0.1 }}
-                                />
-                              </div>
+                                  key={tier}
+                                  initial={{ opacity: 0, x: -50 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: tier * 0.15, type: "spring", stiffness: 100 }}
+                                  className={`bg-gradient-to-r ${data.color} ${data.border} border-4 rounded-2xl p-4 shadow-lg relative overflow-hidden`}
+                                >
 
-                              <div className="grid grid-cols-2 gap-2 text-xs">
-                                <div className="flex justify-between">
-                                  <span className="text-muted-foreground">{t('drawn')}:</span>
-                                  <span className="font-medium text-green-500">{drawnTierItems.length}개</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-muted-foreground">{t('remaining')}:</span>
-                                  <span className="font-medium text-blue-500">{remainingTierItems.length}개</span>
-                                </div>
-                              </div>
-                            </motion.div>
-                          );
-                        })}
+                                  {/* 점선 구분선 */}
+                                  <div className="absolute left-8 right-8 top-0 bottom-0 border-l-2 border-r-2 border-dashed border-white/40"></div>
+
+                                  <div className="relative z-10 flex items-center justify-between">
+                                    {/* 왼쪽: 등급 정보 */}
+                                    <div className="flex items-center gap-4">
+                                      <div className="bg-white/90 rounded-full p-3 border-3 border-gray-600">
+                                        <span className="text-3xl">{data.emoji}</span>
+                                      </div>
+                                      <div>
+                                        <div className="bg-white/80 px-4 py-2 rounded-xl border-2 border-gray-600">
+                                          <h4 className="text-xl font-bold text-gray-800">{data.label}</h4>
+                                          <p className="text-sm text-gray-600 font-semibold">{tierNames[tier as keyof typeof tierNames]} 등급</p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* 가운데: 진행률 시각화 */}
+                                    <div className="flex-1 mx-6">
+                                      <div className="bg-white/60 rounded-full h-8 border-3 border-gray-600 overflow-hidden relative">
+                                        <motion.div
+                                          className="h-full bg-gradient-to-r from-white via-gray-200 to-white relative"
+                                          initial={{ width: 0 }}
+                                          animate={{ width: `${(drawnTierItems.length / tierItems.length) * 100}%` }}
+                                          transition={{ duration: 1.5, delay: tier * 0.3, ease: "easeOut" }}
+                                        >
+                                          {/* 쿠지함에서 뽑는 애니메이션 효과 */}
+                                          <motion.div
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-red-400/60 to-transparent"
+                                            animate={{ x: ['-100%', '300%'] }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: tier * 0.5 }}
+                                          />
+                                        </motion.div>
+                                      </div>
+                                      <div className="flex justify-between mt-2 text-sm font-bold">
+                                        <span className="text-gray-700">진행률: {Math.round((drawnTierItems.length / tierItems.length) * 100)}%</span>
+                                      </div>
+                                    </div>
+
+                                    {/* 오른쪽: 수량 정보 */}
+                                    <div className="text-right">
+                                      <div className="bg-white/90 rounded-xl p-3 border-3 border-gray-600 min-w-[120px]">
+                                        <div className="text-2xl font-bold text-red-600 mb-1">
+                                          {drawnTierItems.length}/{tierItems.length}
+                                        </div>
+                                        <div className="text-xs text-gray-600 font-semibold">
+                                          남은수량: <span className="text-blue-600">{tierItems.length - drawnTierItems.length}장</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* 고등급 특수 효과 */}
+                                  {tier <= 2 && (
+                                    <>
+                                      <motion.div
+                                        className="absolute top-2 left-1/2 transform -translate-x-1/2 text-3xl"
+                                        animate={{
+                                          scale: [1, 1.4, 1],
+                                          rotate: [0, 180, 360],
+                                        }}
+                                        transition={{ duration: 3, repeat: Infinity, delay: tier * 0.7 }}
+                                      >
+                                        ✨
+                                      </motion.div>
+                                      <motion.div
+                                        className="absolute bottom-2 right-1/4 text-2xl"
+                                        animate={{
+                                          scale: [1, 1.2, 1],
+                                          opacity: [0.5, 1, 0.5],
+                                        }}
+                                        transition={{ duration: 2, repeat: Infinity, delay: tier * 0.4 }}
+                                      >
+                                        🌟
+                                      </motion.div>
+                                    </>
+                                  )}
+                                </motion.div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+
+                        {/* 쿠지판 모서리 장식들 */}
+                        <div className="absolute -top-4 -left-4 w-12 h-12 bg-yellow-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                          <span className="text-2xl">🎯</span>
+                        </div>
+                        <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                          <span className="text-2xl">🏮</span>
+                        </div>
+                        <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-yellow-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                          <span className="text-2xl">🌸</span>
+                        </div>
+                        <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                          <span className="text-2xl">⛩️</span>
+                        </div>
                       </div>
                     )}
-                  </div>
                 </CardContent>
               </Card>
 
@@ -490,21 +635,6 @@ const Index = () => {
             </motion.div>
           </div>
         )}
-
-        {/* PWA 안내 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="text-center"
-        >
-          <Card className="inline-block bg-card/60 backdrop-blur-sm border border-primary/20 px-6 py-3">
-            <p className="text-sm text-muted-foreground flex items-center gap-2">
-              <Download className="w-4 h-4" />
-              {t('pwaInstall')}
-            </p>
-          </Card>
-        </motion.div>
       </div>
 
       {/* 결과 모달 */}

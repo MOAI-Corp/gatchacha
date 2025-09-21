@@ -96,9 +96,9 @@ export const translations: Record<Language, Translations> = {
     reset: '리셋',
     statistics: '통계',
 
-    totalItems: '총 아이템',
-    remainingItems: '남은 아이템',
-    drawnItems: '뽑은 아이템',
+    totalItems: '전체 갯수',
+    remainingItems: '남은 갯수',
+    drawnItems: '뽑은 갯수',
     progress: '진행률',
     drawn: '뽑음',
     remaining: '남음',
