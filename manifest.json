@@ -1,0 +1,27 @@
+{
+  "name": "Gatchacha",
+  "short_name": "Gatchacha",
+  "description": "일본 이치방쿠지 스타일의 인터넷 뽑기 게임",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./placeholder.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./placeholder.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "ko-KR",
+  "scope": "./"
+}
