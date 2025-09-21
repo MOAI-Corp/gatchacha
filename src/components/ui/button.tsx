@@ -15,6 +15,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        legendary: "bg-legendary text-legendary-foreground hover:bg-legendary/90 glow-legendary border border-legendary/50",
+        epic: "bg-epic text-epic-foreground hover:bg-epic/90 glow-epic border border-epic/50",
+        rare: "bg-rare text-rare-foreground hover:bg-rare/90 glow-rare border border-rare/50",
+        uncommon: "bg-uncommon text-uncommon-foreground hover:bg-uncommon/90 border border-uncommon/50",
+        common: "bg-common text-common-foreground hover:bg-common/90 border border-common/50",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -47,6 +47,26 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        legendary: {
+          DEFAULT: "hsl(var(--legendary))",
+          foreground: "hsl(var(--legendary-foreground))",
+        },
+        epic: {
+          DEFAULT: "hsl(var(--epic))",
+          foreground: "hsl(var(--epic-foreground))",
+        },
+        rare: {
+          DEFAULT: "hsl(var(--rare))",
+          foreground: "hsl(var(--rare-foreground))",
+        },
+        uncommon: {
+          DEFAULT: "hsl(var(--uncommon))",
+          foreground: "hsl(var(--uncommon-foreground))",
+        },
+        common: {
+          DEFAULT: "hsl(var(--common))",
+          foreground: "hsl(var(--common-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -12,6 +12,11 @@ const badgeVariants = cva(
         secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
+        legendary: "border-transparent bg-legendary text-legendary-foreground hover:bg-legendary/80 glow-legendary",
+        epic: "border-transparent bg-epic text-epic-foreground hover:bg-epic/80 glow-epic",
+        rare: "border-transparent bg-rare text-rare-foreground hover:bg-rare/80 glow-rare",
+        uncommon: "border-transparent bg-uncommon text-uncommon-foreground hover:bg-uncommon/80",
+        common: "border-transparent bg-common text-common-foreground hover:bg-common/80",
       },
     },
     defaultVariants: {
