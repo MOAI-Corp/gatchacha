@@ -1,9 +1,9 @@
 const CACHE_NAME = 'gacha-app-v1';
 const urlsToCache = [
-  '/',
-  '/static/js/bundle.js',
-  '/static/css/main.css',
-  '/manifest.json'
+  './',
+  './index.html',
+  './manifest.json',
+  './placeholder.svg'
 ];
 
 self.addEventListener('install', (event) => {

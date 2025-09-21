@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>뽑기판 - Gatchacha</title>
+    <title>Gatchacha</title>
     <meta name="description" content="인터넷 뽑기 시스템" />
     <meta name="author" content="Lovable" />
 
-    <meta property="og:title" content="뽑기판 - Gatchacha" />
+    <meta property="og:title" content="Gatchacha" />
     <meta property="og:description" content="인터넷 뽑기 시스템" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
@@ -16,11 +16,11 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#e879f9" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="뽑기판" />
+    <meta name="apple-mobile-web-app-title" content="Gatchacha" />
   </head>
 
   <body>
@@ -29,7 +29,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          navigator.serviceWorker.register('./sw.js')
             .then((registration) => {
               console.log('SW registered: ', registration);
             })

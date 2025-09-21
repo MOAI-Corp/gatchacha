@@ -1,24 +1,27 @@
 {
-  "name": "뽑기판 - Gatchacha",
-  "short_name": "뽑기판",
-  "description": "A gacha simulator for Genshin Impact, Honkai Star Rail, and more.",
-  "start_url": "/",
+  "name": "Gatchacha",
+  "short_name": "Gatchacha",
+  "description": "일본 이치방쿠지 스타일의 인터넷 뽑기 게임",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#0f0f23",
-  "theme_color": "#e879f9",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/placeholder.svg",
+      "src": "./placeholder.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/placeholder.svg", 
+      "src": "./placeholder.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "ko-KR",
+  "scope": "./"
 }

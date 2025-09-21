@@ -9,7 +9,7 @@ import { TemplateSelector } from '@/components/TemplateSelector';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { gachaTemplates, getTemplate } from '@/lib/templates';
 import { GachaItem, GachaTemplate, drawGacha, resetGacha } from '@/lib/gacha';
-import { RotateCcw, Save, Download, Sparkles, Star, Crown, Gem, Award, Medal } from 'lucide-react';
+import { RotateCcw, Save } from 'lucide-react';
 import { initializeLanguage, t } from '@/lib/i18n';
 
 const Index = () => {
@@ -311,7 +311,7 @@ const Index = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
-              className="col-span-3 space-y-6"
+              className="col-span-3 space-y-4 overflow-y-auto"
             >
               {/* 일본 복권판 스타일 통계 */}
               <Card className="bg-gradient-to-br from-red-50 to-yellow-50 border-4 border-red-500 rounded-2xl relative overflow-hidden">
@@ -353,61 +353,61 @@ const Index = () => {
                   <div className="absolute top-2 right-2 w-6 h-6 bg-yellow-400 rounded-full border-2 border-white"></div>
                 </CardHeader>
 
-                <CardContent className="relative z-10 p-6">
-                  <div className="space-y-6">
+                <CardContent className="relative z-10 p-4">
+                  <div className="space-y-4">
                     {/* 메인 통계 박스들 */}
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-4 gap-3">
                       <motion.div
-                        className="bg-white/90 border-3 border-red-400 rounded-xl p-4 text-center shadow-lg"
+                        className="bg-white/90 border-3 border-red-400 rounded-xl p-3 text-center shadow-lg"
                         whileHover={{ scale: 1.05, rotate: 1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="text-sm text-gray-600 font-semibold">{t('totalItems')}</div>
-                        <div className="text-2xl font-bold text-red-600">{totalCount}</div>
+                        <div className="text-xs text-gray-600 font-semibold">{t('totalItems')}</div>
+                        <div className="text-xl font-bold text-red-600">{totalCount}</div>
                       </motion.div>
 
                       <motion.div
-                        className="bg-white/90 border-3 border-blue-400 rounded-xl p-4 text-center shadow-lg"
+                        className="bg-white/90 border-3 border-blue-400 rounded-xl p-3 text-center shadow-lg"
                         whileHover={{ scale: 1.05, rotate: -1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="text-sm text-gray-600 font-semibold">{t('remainingItems')}</div>
-                        <div className="text-2xl font-bold text-blue-600">{remainingCount}</div>
+                        <div className="text-xs text-gray-600 font-semibold">{t('remainingItems')}</div>
+                        <div className="text-xl font-bold text-blue-600">{remainingCount}</div>
                       </motion.div>
 
                       <motion.div
-                        className="bg-white/90 border-3 border-green-400 rounded-xl p-4 text-center shadow-lg"
+                        className="bg-white/90 border-3 border-green-400 rounded-xl p-3 text-center shadow-lg"
                         whileHover={{ scale: 1.05, rotate: 1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="text-sm text-gray-600 font-semibold">{t('drawnItems')}</div>
-                        <div className="text-2xl font-bold text-green-600">{drawnItems.length}</div>
+                        <div className="text-xs text-gray-600 font-semibold">{t('drawnItems')}</div>
+                        <div className="text-xl font-bold text-green-600">{drawnItems.length}</div>
                       </motion.div>
 
                       <motion.div
-                        className="bg-white/90 border-3 border-purple-400 rounded-xl p-4 text-center shadow-lg"
+                        className="bg-white/90 border-3 border-purple-400 rounded-xl p-3 text-center shadow-lg"
                         whileHover={{ scale: 1.05, rotate: -1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="text-sm text-gray-600 font-semibold">{t('progress')}</div>
-                        <div className="text-2xl font-bold text-purple-600">
+                        <div className="text-xs text-gray-600 font-semibold">{t('progress')}</div>
+                        <div className="text-xl font-bold text-purple-600">
                           {Math.round(((totalCount - remainingCount) / totalCount) * 100)}%
                         </div>
                       </motion.div>
                     </div>
 
                     {/* 진행률 바 - 복권판 스타일 */}
-                    <div className="bg-white/90 border-3 border-red-400 rounded-xl p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="font-bold text-red-700 flex items-center gap-2">
-                          <span className="text-xl">🎯</span>
+                    <div className="bg-white/90 border-3 border-red-400 rounded-xl p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-bold text-red-700 flex items-center gap-2 text-sm">
+                          <span className="text-lg">🎯</span>
                           전체 진행률
                         </span>
-                        <span className="bg-red-100 px-3 py-1 rounded-full text-red-700 font-bold">
+                        <span className="bg-red-100 px-2 py-1 rounded-full text-red-700 font-bold text-sm">
                           {Math.round(((totalCount - remainingCount) / totalCount) * 100)}%
                         </span>
                       </div>
-                      <div className="bg-gray-200 rounded-full h-6 overflow-hidden border-2 border-red-300">
+                      <div className="bg-gray-200 rounded-full h-4 overflow-hidden border-2 border-red-300">
                         <motion.div
                           className="h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 relative"
                           initial={{ width: 0 }}
@@ -426,11 +426,11 @@ const Index = () => {
 
                     {/* 일본 쿠지판 스타일 등급별 디스플레이 */}
                     {currentTemplate && (
-                      <div className="bg-gradient-to-br from-red-100 via-white to-yellow-100 border-8 border-red-600 rounded-3xl p-6 relative shadow-2xl">
+                      <div className="bg-gradient-to-br from-red-100 via-white to-yellow-100 border-6 border-red-600 rounded-2xl p-4 relative shadow-2xl">
                         {/* 쿠지판 장식 헤더 */}
 
                         {/* 쿠지판 메인 보드 */}
-                        <div className="">
+                        <div className="bg-white/60 border-3 border-red-400 rounded-xl p-3 relative">
                           {/* 일본 전통 패턴 배경 */}
                           <div className="absolute inset-0 opacity-5">
                             <div className="w-full h-full" style={{
@@ -439,7 +439,7 @@ const Index = () => {
                             }} />
                           </div>
 
-                          <div className="relative z-10 space-y-4">
+                          <div className="relative z-10 space-y-2">
                             {[1, 2, 3, 4, 5].map((tier) => {
                               const tierItems = currentTemplate.items.filter(item => item.tier === tier);
                               const drawnTierItems = tierItems.filter(item => item.drawn);
@@ -470,7 +470,7 @@ const Index = () => {
                                   initial={{ opacity: 0, x: -50 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: tier * 0.15, type: "spring", stiffness: 100 }}
-                                  className={`bg-gradient-to-r ${data.color} ${data.border} border-4 rounded-2xl p-4 shadow-lg relative overflow-hidden`}
+                                  className={`bg-gradient-to-r ${data.color} ${data.border} border-3 rounded-xl p-3 shadow-lg relative overflow-hidden`}
                                 >
 
                                   {/* 점선 구분선 */}
@@ -478,48 +478,60 @@ const Index = () => {
 
                                   <div className="relative z-10 flex items-center justify-between">
                                     {/* 왼쪽: 등급 정보 */}
-                                    <div className="flex items-center gap-4">
-                                      <div className="bg-white/90 rounded-full p-3 border-3 border-gray-600">
-                                        <span className="text-3xl">{data.emoji}</span>
+                                    <div className="flex items-center gap-3">
+                                      <div className="bg-white/90 rounded-full p-2 border-2 border-gray-600">
+                                        <span className="text-2xl">{data.emoji}</span>
                                       </div>
                                       <div>
-                                        <div className="bg-white/80 px-4 py-2 rounded-xl border-2 border-gray-600">
-                                          <h4 className="text-xl font-bold text-gray-800">{data.label}</h4>
-                                          <p className="text-sm text-gray-600 font-semibold">{tierNames[tier as keyof typeof tierNames]} 등급</p>
+                                        <div className="bg-white/80 px-3 py-1 rounded-lg border-2 border-gray-600">
+                                          <p className="text-xs text-gray-600 font-semibold">{tierNames[tier as keyof typeof tierNames]} 등급</p>
                                         </div>
                                       </div>
                                     </div>
 
-                                    {/* 가운데: 진행률 시각화 */}
-                                    <div className="flex-1 mx-6">
-                                      <div className="bg-white/60 rounded-full h-8 border-3 border-gray-600 overflow-hidden relative">
-                                        <motion.div
-                                          className="h-full bg-gradient-to-r from-white via-gray-200 to-white relative"
-                                          initial={{ width: 0 }}
-                                          animate={{ width: `${(drawnTierItems.length / tierItems.length) * 100}%` }}
-                                          transition={{ duration: 1.5, delay: tier * 0.3, ease: "easeOut" }}
-                                        >
-                                          {/* 쿠지함에서 뽑는 애니메이션 효과 */}
+                                    {/* 가운데: 뽑기판 스타일 슬롯 그리드 */}
+                                    <div className="flex-1 mx-4">
+                                      <div className="grid grid-cols-8 gap-1 bg-white/80 p-2 rounded-lg border-2 border-gray-600">
+                                        {tierItems.map((item, index) => (
                                           <motion.div
-                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-red-400/60 to-transparent"
-                                            animate={{ x: ['-100%', '300%'] }}
-                                            transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: tier * 0.5 }}
-                                          />
-                                        </motion.div>
+                                            key={item.id}
+                                            initial={{ opacity: 0, scale: 0 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: index * 0.05, type: "spring" }}
+                                            className={`w-6 h-6 border-2 rounded-md flex items-center justify-center text-xs ${
+                                              item.drawn
+                                                ? `bg-gradient-to-br ${data.color} border-gray-700 shadow-md`
+                                                : 'bg-gray-100 border-gray-400 hover:bg-gray-200'
+                                            }`}
+                                          >
+                                            {item.drawn ? (
+                                              <motion.span
+                                                initial={{ scale: 0, rotate: -180 }}
+                                                animate={{ scale: 1, rotate: 0 }}
+                                                transition={{ type: "spring", stiffness: 200 }}
+                                                className="text-lg"
+                                              >
+                                                {data.emoji}
+                                              </motion.span>
+                                            ) : (
+                                              <span className="text-gray-400 text-xs">📦</span>
+                                            )}
+                                          </motion.div>
+                                        ))}
                                       </div>
-                                      <div className="flex justify-between mt-2 text-sm font-bold">
-                                        <span className="text-gray-700">진행률: {Math.round((drawnTierItems.length / tierItems.length) * 100)}%</span>
+                                      <div className="flex justify-center mt-1 text-xs font-bold">
+                                        <span className="text-gray-700">{drawnTierItems.length}/{tierItems.length} 완료</span>
                                       </div>
                                     </div>
 
                                     {/* 오른쪽: 수량 정보 */}
                                     <div className="text-right">
-                                      <div className="bg-white/90 rounded-xl p-3 border-3 border-gray-600 min-w-[120px]">
-                                        <div className="text-2xl font-bold text-red-600 mb-1">
+                                      <div className="bg-white/90 rounded-lg p-2 border-2 border-gray-600 min-w-[100px]">
+                                        <div className="text-lg font-bold text-red-600 mb-1">
                                           {drawnTierItems.length}/{tierItems.length}
                                         </div>
                                         <div className="text-xs text-gray-600 font-semibold">
-                                          남은수량: <span className="text-blue-600">{tierItems.length - drawnTierItems.length}장</span>
+                                          남은: <span className="text-blue-600">{tierItems.length - drawnTierItems.length}장</span>
                                         </div>
                                       </div>
                                     </div>
